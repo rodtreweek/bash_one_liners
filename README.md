@@ -5,3 +5,8 @@
 ```
 grep "Failed password" /var/log/auth.log | awk ‘{print $11}’ | uniq -c | sort -nr
 ```
+Note: On newer Linux distributions you can query the runtime log file maintained by Systemd daemon via journalctl command. In order to display all failed SSH login attempts you should pipe the result via grep filter:
+```
+# journalctl _SYSTEMD_UNIT=ssh.service | egrep "Failed|Failure"
+# journalctl _SYSTEMD_UNIT=sshd.service | egrep "Failed|Failure"  #In RHEL, CentOS 
+```
