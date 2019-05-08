@@ -5,7 +5,7 @@
 ```
 grep "Failed password" /var/log/auth.log | awk ‘{print $11}’ | uniq -c | sort -nr
 ```
-Or you could use the following regex pattern with grep:
+Or you could use the following regex pattern with grep (grep -Po only works w/ GNU grep, not MacOS):
 ```
 grep "Failed password" /var/log/auth.log | grep -Po "[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+" | uniq -c | sort -nr
 ```
