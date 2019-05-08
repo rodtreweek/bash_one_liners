@@ -9,7 +9,7 @@ If you want to filter out the "illegal user" lines, you could use:
 ```
 grep "Failed password" /var/log/auth.log | grep -v "Failed password for illegal" | awk '{print $11}' | sort -nr | uniq -c
 ```
-Or you could use the following regex pattern with grep (grep -Po only works w/ GNU grep, not MacOS):
+Or you could use the following regex pattern with grep (Note: `grep -Po` only works w/ GNU grep, not MacOS):
 ```
 grep "Failed password" /var/log/auth.log | grep -Po "[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+" | sort -nr | uniq -c
 ```
