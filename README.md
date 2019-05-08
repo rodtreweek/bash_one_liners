@@ -7,7 +7,7 @@ grep "Failed password" /var/log/auth.log | awk ‘{print $11}’ | uniq -c | sor
 ```
 Or you could use the following regex pattern with grep (grep -Po only works w/ GNU grep, not MacOS):
 ```
-grep "Failed password" /var/log/auth.log | grep -Po "[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+" | uniq -c | sort -nr
+grep "Failed password" /var/log/auth.log | grep -Po "[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+" | sort -nr | uniq -c
 ```
 Note: On newer Linux distributions you can query the runtime log file maintained by Systemd daemon via journalctl command. In order to display all failed SSH login attempts you should pipe the result via grep filter:
 ```
